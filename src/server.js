@@ -3,7 +3,7 @@ import routes from './routes';
 
 const app = express();
 
-app.get('/', routes);
+app.use(routes);
 
 app.listen(
   3000,
