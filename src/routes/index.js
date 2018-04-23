@@ -1,10 +1,10 @@
 import express from 'express';
 const router = express.Router();
 
-import getOrderBook from './getOrderBook';
+import api from './api';
 
 
-router.use('/api', getOrderBook);
-router.use('/', (req, res) => res.send('Hello World!'));
+router.use('/', api);
+router.use('/', (req, res) => res.send('Catchall'));
 
 export default router;

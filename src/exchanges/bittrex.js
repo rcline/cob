@@ -17,30 +17,45 @@ const getCurrencies = () => {
 
 const getTicker = () => {
   const url = `${baseUrl}/getticker`;
-  return fetch(url);
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    });
 };
 
 const getMarketSummaries = () => {
   const url = `${baseUrl}/getmarketsummaries`;
-  return fetch(url);
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    });
 };
 
 const getMarketSummary = () => {
   const market = 'BTC-ETH';
   const url = `${baseUrl}/getmarketsummary?market=${market}`;
-  return fetch(url);
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    });
 };
 
 const getOrderBook = () => {
   const market = 'BTC-ETH';
   const url = `${baseUrl}/getorderbook?market=${market}&type=both`;
-  return fetch(url);
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    });
 };
 
 const getMarketHistory = () => {
   const market = 'BTC-ETH';
   const url = `${baseUrl}/getmarkethistory?market=${market}`;
-  return fetch(url);
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    });
 };
 
 export {
