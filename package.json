@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "COB",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/rcline/cob.git"
@@ -15,5 +12,23 @@
   "bugs": {
     "url": "https://github.com/rcline/cob/issues"
   },
-  "homepage": "https://github.com/rcline/cob#readme"
+  "homepage": "https://github.com/rcline/cob#readme",
+  "engines": {
+    "node": "^8.9.4",
+    "yarn": "^1.5.1"
+  },
+  "scripts": {
+    "prestart": "check-engines",
+    "start": "babel-watch src/server.js -w"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-watch": "^2.0.7",
+    "check-engines": "^1.5.0"
+  }
 }
