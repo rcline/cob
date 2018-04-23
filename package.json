@@ -22,7 +22,8 @@
     "start": "babel-watch src/server.js -w"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "node-fetch": "^2.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
