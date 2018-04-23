@@ -40,7 +40,16 @@ const getOrderBook = () => {
   const url = `${baseUrl}?command=returnOrderBook&currencyPair=${market}&depth=100`;
   return fetch(url)
     .then(response => {
-      return response.json();
+      return response.json().then(json => {
+        return {
+          'buy': json.bids.map((order) => {
+            return [parseFloat(order[0]), order[1]];
+          }),
+          'sell': json.asks.map((order) => {
+            return [parseFloat(order[0]), order[1]];
+          }),
+        };
+      });
     });
 };
 
@@ -50,7 +59,21 @@ const getMarketHistory = () => {
   const url = `${baseUrl}?command=returnTradeHistory&currencyPair=${market}&depth=100`;
   return fetch(url)
     .then(response => {
-      return response.json();
+      return response.json().then(json => {
+        return [
+          json.map((order) => {
+            return {
+              // globalTradeID": 364253389,
+              id: order.tradeID, // 42976537,
+              date: order.date, // "2018-04-23 04:59:57",
+              type: order.type, // "sell",
+              rate: parseFloat(order.rate), // "0.07128901",
+              amount: parseFloat(order.amount), // "0.08711866",
+              total: parseFloat(order.total), // "0.00621060"
+            };
+          }),
+        ];
+      });
     });
 };
 
