@@ -2,10 +2,11 @@ import express from 'express';
 import routes from './routes';
 
 const app = express();
+const port = process.env.PORT || 3000
 
 app.use(routes);
 
 app.listen(
-  3000,
-  () => console.log('COB listening on port 3000')
+  port,
+  () => console.log(`COB listening on port ${port}`)
 );

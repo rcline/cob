@@ -2,7 +2,7 @@
   "name": "cob",
   "version": "0.0.1",
   "description": "COB",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/rcline/cob.git"
@@ -18,8 +18,10 @@
     "yarn": "^1.5.1"
   },
   "scripts": {
+    "build": "babel src -d dist",
+    "dev": "babel-watch src/server.js -w",
     "prestart": "check-engines",
-    "start": "babel-watch src/server.js -w"
+    "start": "node dist/server.js"
   },
   "dependencies": {
     "express": "^4.16.3",

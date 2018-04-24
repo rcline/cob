@@ -1,0 +1,8 @@
+{
+  "name": "rcline-cob",
+  "description": "cob",
+  "repository": "https://github.com/rcline/cob",
+  "logo": "",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
