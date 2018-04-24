@@ -14,16 +14,37 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express2.default.Router();
 
+function combineCollections(collections, descending) {
+  var combined = collections.reduce(function (acc, val) {
+    return acc.concat(val);
+  }, []);
+  return combined.sort(function (a, b) {
+    if (descending) {
+      return b.rate - a.rate;
+    } else {
+      return a.rate - b.rate;
+    }
+  });
+}
+
 router.get('/orderbook', function (req, res, next) {
+  Promise.all([_exchanges.bittrex.getOrderBook(), _exchanges.poloniex.getOrderBook()]).then(function (exchanges) {
+    var buyCollection = [];
+    var sellCollection = [];
 
-  Promise.all([_exchanges.bittrex.getOrderBook(), _exchanges.poloniex.getOrderBook()]).then(function (values) {
-    var bittrexData = values[0];
-    var poloniexData = values[1];
-
-    res.json({
-      bittrex: bittrexData,
-      poloniex: poloniexData
+    exchanges.forEach(function (exchange) {
+      if (exchange) {
+        buyCollection.push(exchange.buy);
+        sellCollection.push(exchange.sell);
+      }
     });
+
+    var data = {
+      buy: combineCollections(buyCollection, true),
+      sell: combineCollections(sellCollection)
+    };
+
+    res.json(data);
   }).catch(function (error) {
     console.log(error);
     next();

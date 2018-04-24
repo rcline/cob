@@ -45,10 +45,18 @@ var getOrderBook = function getOrderBook() {
     return response.json().then(function (json) {
       return {
         'buy': json.bids.map(function (order) {
-          return [parseFloat(order[0]), order[1]];
+          return {
+            rate: parseFloat(order[0]),
+            amount: order[1],
+            exchange: 'poloniex'
+          };
         }),
         'sell': json.asks.map(function (order) {
-          return [parseFloat(order[0]), order[1]];
+          return {
+            rate: parseFloat(order[0]),
+            amount: order[1],
+            exchange: 'poloniex'
+          };
         })
       };
     });
@@ -58,20 +66,21 @@ var getOrderBook = function getOrderBook() {
 // https://poloniex.com/public?command=returnTradeHistory&currencyPair=BTC_NXT&start=1410158341&end=1410499372
 var getMarketHistory = function getMarketHistory() {
   var market = 'BTC_ETH';
-  var url = baseUrl + '?command=returnTradeHistory&currencyPair=' + market + '&depth=100';
+  var url = baseUrl + '?command=returnTradeHistory&currencyPair=' + market;
   return (0, _nodeFetch2.default)(url).then(function (response) {
     return response.json().then(function (json) {
-      return [json.map(function (order) {
+      return json.slice(0, 100).map(function (order) {
         return {
           // globalTradeID": 364253389,
           id: order.tradeID, // 42976537,
-          date: order.date, // "2018-04-23 04:59:57",
+          date: new Date(order.date).getTime(), // "2018-04-23 04:59:57",
           type: order.type, // "sell",
           rate: parseFloat(order.rate), // "0.07128901",
           amount: parseFloat(order.amount), // "0.08711866",
-          total: parseFloat(order.total) // "0.00621060"
+          total: parseFloat(order.total), // "0.00621060"
+          exchange: 'poloniex'
         };
-      })];
+      });
     });
   });
 };

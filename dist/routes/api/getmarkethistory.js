@@ -14,16 +14,20 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var router = _express2.default.Router();
 
+function combineCollections(collections) {
+  var combined = collections.reduce(function (acc, val) {
+    return acc.concat(val);
+  }, []);
+  return combined.sort(function (a, b) {
+    return b.date - a.date;
+  });
+}
+
 router.get('/markethistory', function (req, res, next) {
+  Promise.all([_exchanges.bittrex.getMarketHistory(), _exchanges.poloniex.getMarketHistory()]).then(function (exchanges) {
+    var data = combineCollections(exchanges);
 
-  Promise.all([_exchanges.bittrex.getMarketHistory(), _exchanges.poloniex.getMarketHistory()]).then(function (values) {
-    var bittrexData = values[0];
-    var poloniexData = values[1];
-
-    res.json({
-      bittrex: bittrexData,
-      poloniex: poloniexData
-    });
+    res.json(data);
   }).catch(function (error) {
     console.log(error);
     next();

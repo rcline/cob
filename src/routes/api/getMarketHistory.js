@@ -3,20 +3,21 @@ import { bittrex, poloniex } from '../../exchanges';
 
 const router = express.Router();
 
+function combineCollections(collections) {
+  const combined = collections.reduce((acc, val) => acc.concat(val), []);
+  return combined.sort(function (a, b) {
+    return b.date - a.date;
+  });
+}
 
 router.get('/markethistory', (req, res, next) => {
-
   Promise.all([
     bittrex.getMarketHistory(),
     poloniex.getMarketHistory(),
-  ]).then((values) => {
-    const bittrexData = values[0];
-    const poloniexData = values[1];
+  ]).then((exchanges) => {
+    const data = combineCollections(exchanges);
 
-    res.json({
-      bittrex: bittrexData,
-      poloniex: poloniexData,
-    });
+    res.json(data);
   }).catch(error => {
     console.log(error);
     next();
