@@ -13,6 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 var port = process.env.PORT || 3000;
 
+app.use(_express2.default.static('public'));
 app.use(_routes2.default);
 
 app.listen(port, function () {

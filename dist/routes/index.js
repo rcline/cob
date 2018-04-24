@@ -4,6 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
 var _express = require('express');
 
 var _express2 = _interopRequireDefault(_express);
@@ -18,7 +22,7 @@ var router = _express2.default.Router();
 
 router.use('/', _api2.default);
 router.use('/', function (req, res) {
-  return res.send('Catchall');
+  return res.sendFile(_path2.default.resolve(__dirname, '../../public/view.html'));
 });
 
 exports.default = router;
