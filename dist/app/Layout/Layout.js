@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HomePage = require('./HomePage');
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22,23 +18,31 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+var Layout = function (_React$Component) {
+  _inherits(Layout, _React$Component);
 
-  function App() {
-    _classCallCheck(this, App);
+  function Layout() {
+    _classCallCheck(this, Layout);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).apply(this, arguments));
   }
 
-  _createClass(App, [{
+  _createClass(Layout, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_HomePage2.default, null);
+      return _react2.default.createElement(
+        'div',
+        { style: { textAlign: 'center' } },
+        _react2.default.createElement(
+          'div',
+          { className: 'content' },
+          this.props.children
+        )
+      );
     }
   }]);
 
-  return App;
+  return Layout;
 }(_react2.default.Component);
 
-exports.default = App;
+exports.default = Layout;

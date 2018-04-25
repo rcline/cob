@@ -10,9 +10,17 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HomePage = require('./HomePage');
+var _Header = require('../Header');
 
-var _HomePage2 = _interopRequireDefault(_HomePage);
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Layout = require('../Layout');
+
+var _Layout2 = _interopRequireDefault(_Layout);
+
+var _MarketHistory = require('../MarketHistory');
+
+var _MarketHistory2 = _interopRequireDefault(_MarketHistory);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,7 +42,26 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_HomePage2.default, null);
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_Header2.default, null),
+        _react2.default.createElement(
+          _Layout2.default,
+          null,
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Combined Order Book'
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Combined Market History'
+          ),
+          _react2.default.createElement(_MarketHistory2.default, null)
+        )
+      );
     }
   }]);
 

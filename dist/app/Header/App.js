@@ -10,10 +10,6 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HomePage = require('./HomePage');
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34,7 +30,15 @@ var App = function (_React$Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_HomePage2.default, null);
+      return _react2.default.createElement(
+        'div',
+        { style: { textAlign: 'center' } },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Hello World'
+        )
+      );
     }
   }]);
 

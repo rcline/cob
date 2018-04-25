@@ -1,11 +1,10 @@
 import React from 'react';
+import HomePage from './HomePage';
 
 export default class App extends React.Component {
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
-        <h1>Hello World</h1>
-      </div>
+      <HomePage />
     );
   }
 }
