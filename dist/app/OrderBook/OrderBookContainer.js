@@ -14,9 +14,9 @@ var _isomorphicFetch = require('isomorphic-fetch');
 
 var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
-var _MarketHistory = require('./MarketHistory');
+var _OrderBook = require('./OrderBook');
 
-var _MarketHistory2 = _interopRequireDefault(_MarketHistory);
+var _OrderBook2 = _interopRequireDefault(_OrderBook);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26,42 +26,42 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var MarketHistoryContainer = function (_Component) {
-  _inherits(MarketHistoryContainer, _Component);
+var OrderBookContainer = function (_Component) {
+  _inherits(OrderBookContainer, _Component);
 
-  function MarketHistoryContainer() {
+  function OrderBookContainer() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    _classCallCheck(this, MarketHistoryContainer);
+    _classCallCheck(this, OrderBookContainer);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MarketHistoryContainer.__proto__ || Object.getPrototypeOf(MarketHistoryContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-      history: []
-    }, _this.setHistory = function (history) {
-      _this.setState({ history: history });
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = OrderBookContainer.__proto__ || Object.getPrototypeOf(OrderBookContainer)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+      orderbook: {}
+    }, _this.setOrderbook = function (orderbook) {
+      _this.setState({ orderbook: orderbook });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
-  _createClass(MarketHistoryContainer, [{
+  _createClass(OrderBookContainer, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      (0, _isomorphicFetch2.default)('/api/markethistory').then(function (response) {
+      (0, _isomorphicFetch2.default)('/api/orderbook').then(function (response) {
         return response.json();
-      }).then(this.setHistory);
+      }).then(this.setOrderbook);
     }
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_MarketHistory2.default, { data: this.state.history });
+      return _react2.default.createElement(_OrderBook2.default, { data: this.state.orderbook });
     }
   }]);
 
-  return MarketHistoryContainer;
+  return OrderBookContainer;
 }(_react.Component);
 
-exports.default = MarketHistoryContainer;
+exports.default = OrderBookContainer;

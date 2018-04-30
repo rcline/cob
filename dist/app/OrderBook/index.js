@@ -4,10 +4,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _Layout = require('./Layout');
+var _OrderBookContainer = require('./OrderBookContainer');
 
-var _Layout2 = _interopRequireDefault(_Layout);
+var _OrderBookContainer2 = _interopRequireDefault(_OrderBookContainer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = _Layout2.default;
+exports.default = _OrderBookContainer2.default;

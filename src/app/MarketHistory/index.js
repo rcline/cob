@@ -1,4 +1,4 @@
-import MarketHistory from './MarketHistory.jsx';
+import MarketHistory from './MarketHistoryContainer';
 
 export default MarketHistory;
 

@@ -1,35 +1,29 @@
-import MarketHistory from './MarketHistory';
-import { compose } from 'recompose';
+import React, { Component } from 'react';
+import fetch from 'isomorphic-fetch';
 
-
-
-var React = require('react');
-var fetch = require('isomorphic-fetch');
 import MarketHistory from './MarketHistory';
 
-var UserListContainer = React.createClass({
-  getInitialState: function() {
-    return {
-      users: []
-    }
-  },
+class MarketHistoryContainer extends Component {
+  state = {
+    history: [],
+  };
 
-  componentDidMount: function() {
-    var _this = this;
-    axios.get('/path/to/user-api').then(function(response) {
-      _this.setState({users: response.data})
-    });
-  },
+  setHistory = (history) => {
+    this.setState({ history });
+  };
 
-  render: function() {
-    return (<UserList users={this.state.users} />);
+  componentDidMount() {
+    fetch('/api/markethistory')
+      .then(function(response) {
+        return response.json();
+      })
+      .then(this.setHistory);
+  };
+
+  render() {
+    return (<MarketHistory data={this.state.history}/>);
   }
-});
+}
 
-module.exports = UserListContainer;
+export default MarketHistoryContainer;
 
-
-
-export default compose(
-
-)(MarketHistory);

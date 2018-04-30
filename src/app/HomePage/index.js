@@ -1,4 +1,4 @@
-import HomePage from './HomePage.jsx';
+import HomePage from './HomePage';
 
 export default HomePage;
 

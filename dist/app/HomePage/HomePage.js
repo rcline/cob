@@ -22,6 +22,10 @@ var _MarketHistory = require('../MarketHistory');
 
 var _MarketHistory2 = _interopRequireDefault(_MarketHistory);
 
+var _OrderBook = require('../OrderBook');
+
+var _OrderBook2 = _interopRequireDefault(_OrderBook);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -30,8 +34,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+var App = function (_Component) {
+  _inherits(App, _Component);
 
   function App() {
     _classCallCheck(this, App);
@@ -54,6 +58,7 @@ var App = function (_React$Component) {
             null,
             'Combined Order Book'
           ),
+          _react2.default.createElement(_OrderBook2.default, null),
           _react2.default.createElement(
             'h2',
             null,
@@ -66,6 +71,6 @@ var App = function (_React$Component) {
   }]);
 
   return App;
-}(_react2.default.Component);
+}(_react.Component);
 
 exports.default = App;

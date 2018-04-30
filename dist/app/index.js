@@ -8,7 +8,7 @@ var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = require('./App.jsx');
+var _App = require('./App');
 
 var _App2 = _interopRequireDefault(_App);
 

@@ -1,0 +1,11 @@
+.root {
+  overflow: hidden;
+}
+
+.buy-book {
+  float: left;
+}
+
+.sell-book {
+  float: right;
+}

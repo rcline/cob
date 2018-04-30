@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _HomePage = require('./HomePage.jsx');
+var _HomePage = require('./HomePage');
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 

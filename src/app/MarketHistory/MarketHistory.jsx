@@ -15,14 +15,14 @@ function MarketHistory ({ data }) {
           </tr>
         </thead>
         <tbody>
-        {data.forEach((item) =>
-          <tr>
-            <td>{item.date}</td>
-            <td>{item.type}</td>
-            <td>{item.rate}</td>
-            <td>{item.amount}</td>
-            <td>{item.total}</td>
-          </tr>
+          {data && data.length > 0 && data.map((item) =>
+            <tr key={item.id}>
+              <td>{item.date}</td>
+              <td>{item.type}</td>
+              <td>{item.rate}</td>
+              <td>{item.amount}</td>
+              <td>{item.total}</td>
+            </tr>
           )}
         </tbody>
       </table>

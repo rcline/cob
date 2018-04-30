@@ -108,7 +108,15 @@ MarketHistory.propTypes = {
 };
 
 MarketHistory.defaultProps = {
-  data: []
+  data: [{
+    id: '',
+    date: '',
+    type: '',
+    rate: '',
+    amount: '',
+    total: '',
+    exchange: ''
+  }]
 };
 
 exports.default = MarketHistory;
