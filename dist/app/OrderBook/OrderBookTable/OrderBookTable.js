@@ -91,7 +91,7 @@ var OrderBookTable = function (_Component) {
               BOOK.map(function (col, i) {
                 return _react2.default.createElement(
                   'th',
-                  { key: i, className: col.classes },
+                  { key: i },
                   col.text
                 );
               })

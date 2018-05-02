@@ -1,29 +1,16 @@
 import React, { Component } from 'react';
-import fetch from 'isomorphic-fetch';
+import { connect } from 'react-redux';
 
 import MarketHistory from './MarketHistory';
 
-class MarketHistoryContainer extends Component {
-  state = {
-    history: [],
-  };
 
-  setHistory = (history) => {
-    this.setState({ history });
+function mapStateToProps(state) {
+  return {
+    data: state.markethistory,
   };
-
-  componentDidMount() {
-    fetch('/api/markethistory')
-      .then(function(response) {
-        return response.json();
-      })
-      .then(this.setHistory);
-  };
-
-  render() {
-    return (<MarketHistory data={this.state.history}/>);
-  }
 }
 
-export default MarketHistoryContainer;
 
+export default connect(
+  mapStateToProps,
+)(MarketHistory);

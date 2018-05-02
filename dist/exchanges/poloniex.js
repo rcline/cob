@@ -20,6 +20,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var baseUrl = 'https://poloniex.com/public';
 
+var normalizeMarket = function normalizeMarket(market) {
+  return market && market.replace('-', '_');
+};
+
 var getCurrencies = function getCurrencies() {
   var url = baseUrl + '?command=returnCurrencies';
   return (0, _nodeFetch2.default)(url).then(function (response) {
@@ -38,8 +42,8 @@ var getMarketSummaries = function getMarketSummaries() {};
 
 var getMarketSummary = function getMarketSummary() {};
 
-var getOrderBook = function getOrderBook() {
-  var market = 'BTC_ETH';
+var getOrderBook = function getOrderBook(market) {
+  market = normalizeMarket(market) || 'BTC_ETH';
   var url = baseUrl + '?command=returnOrderBook&currencyPair=' + market + '&depth=100';
   return (0, _nodeFetch2.default)(url).then(function (response) {
     return response.json().then(function (json) {
@@ -64,8 +68,8 @@ var getOrderBook = function getOrderBook() {
 };
 
 // https://poloniex.com/public?command=returnTradeHistory&currencyPair=BTC_NXT&start=1410158341&end=1410499372
-var getMarketHistory = function getMarketHistory() {
-  var market = 'BTC_ETH';
+var getMarketHistory = function getMarketHistory(market) {
+  market = normalizeMarket(market) || 'BTC_ETH';
   var url = baseUrl + '?command=returnTradeHistory&currencyPair=' + market;
   return (0, _nodeFetch2.default)(url).then(function (response) {
     return response.json().then(function (json) {

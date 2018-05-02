@@ -15,9 +15,11 @@ function combineCollections(collections, descending) {
 }
 
 router.get('/orderbook', (req, res, next) => {
+  const market = req.params.market;
+
   Promise.all([
-    bittrex.getOrderBook(),
-    poloniex.getOrderBook(),
+    bittrex.getOrderBook(market),
+    poloniex.getOrderBook(market),
   ]).then((exchanges) => {
     const buyCollection = [];
     const sellCollection = [];

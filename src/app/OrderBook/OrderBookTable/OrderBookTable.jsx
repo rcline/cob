@@ -71,7 +71,7 @@ class OrderBookTable extends Component {
           <thead>
           <tr>
             {BOOK.map((col, i) =>
-              <th key={i} className={col.classes}>{col.text}</th>
+              <th key={i}>{col.text}</th>
             )}
           </tr>
           </thead>

@@ -31,8 +31,8 @@ const getMarketSummaries = () => {
     });
 };
 
-const getMarketSummary = () => {
-  const market = 'BTC-ETH';
+const getMarketSummary = (market) => {
+  market = market || 'BTC-ETH';
   const url = `${baseUrl}/getmarketsummary?market=${market}`;
   return fetch(url)
     .then(response => {
@@ -40,8 +40,8 @@ const getMarketSummary = () => {
     });
 };
 
-const getOrderBook = () => {
-  const market = 'BTC-ETH';
+const getOrderBook = (market) => {
+  market = market || 'BTC-ETH';
   const url = `${baseUrl}/getorderbook?market=${market}&type=both`;
   return fetch(url)
     .then(response => {
@@ -67,8 +67,8 @@ const getOrderBook = () => {
     });
 };
 
-const getMarketHistory = () => {
-  const market = 'BTC-ETH';
+const getMarketHistory = (market) => {
+  market = market || 'BTC-ETH';
   const url = `${baseUrl}/getmarkethistory?market=${market}`;
   return fetch(url)
     .then(response => {

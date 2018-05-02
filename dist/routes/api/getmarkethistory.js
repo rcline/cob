@@ -24,7 +24,9 @@ function combineCollections(collections) {
 }
 
 router.get('/markethistory', function (req, res, next) {
-  Promise.all([_exchanges.bittrex.getMarketHistory(), _exchanges.poloniex.getMarketHistory()]).then(function (exchanges) {
+  var market = req.params.market;
+
+  Promise.all([_exchanges.bittrex.getMarketHistory(market), _exchanges.poloniex.getMarketHistory(market)]).then(function (exchanges) {
     var data = combineCollections(exchanges);
 
     res.json(data);

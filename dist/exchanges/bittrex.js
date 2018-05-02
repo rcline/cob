@@ -39,16 +39,16 @@ var getMarketSummaries = function getMarketSummaries() {
   });
 };
 
-var getMarketSummary = function getMarketSummary() {
-  var market = 'BTC-ETH';
+var getMarketSummary = function getMarketSummary(market) {
+  market = market || 'BTC-ETH';
   var url = baseUrl + '/getmarketsummary?market=' + market;
   return (0, _nodeFetch2.default)(url).then(function (response) {
     return response.json();
   });
 };
 
-var getOrderBook = function getOrderBook() {
-  var market = 'BTC-ETH';
+var getOrderBook = function getOrderBook(market) {
+  market = market || 'BTC-ETH';
   var url = baseUrl + '/getorderbook?market=' + market + '&type=both';
   return (0, _nodeFetch2.default)(url).then(function (response) {
     return response.json().then(function (json) {
@@ -72,8 +72,8 @@ var getOrderBook = function getOrderBook() {
   });
 };
 
-var getMarketHistory = function getMarketHistory() {
-  var market = 'BTC-ETH';
+var getMarketHistory = function getMarketHistory(market) {
+  market = market || 'BTC-ETH';
   var url = baseUrl + '/getmarkethistory?market=' + market;
   return (0, _nodeFetch2.default)(url).then(function (response) {
     return response.json().then(function (json) {

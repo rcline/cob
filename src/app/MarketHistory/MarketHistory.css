@@ -4,7 +4,12 @@
 }
 
 .table {
+  text-align: right;
   width: 600px;
+}
+
+.table th {
+  text-align: center;
 }
 
 .type:first-letter{

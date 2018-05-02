@@ -11,9 +11,11 @@ function combineCollections(collections) {
 }
 
 router.get('/markethistory', (req, res, next) => {
+  const market = req.params.market;
+
   Promise.all([
-    bittrex.getMarketHistory(),
-    poloniex.getMarketHistory(),
+    bittrex.getMarketHistory(market),
+    poloniex.getMarketHistory(market),
   ]).then((exchanges) => {
     const data = combineCollections(exchanges);
 

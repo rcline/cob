@@ -10,6 +10,8 @@ import fetch from 'node-fetch';
 
 const baseUrl = 'https://poloniex.com/public';
 
+const normalizeMarket = (market) => market && market.replace('-', '_');
+
 const getCurrencies = () => {
   const url = `${baseUrl}?command=returnCurrencies`;
   return fetch(url)
@@ -35,8 +37,8 @@ const getMarketSummary = () => {
 
 };
 
-const getOrderBook = () => {
-  const market = 'BTC_ETH';
+const getOrderBook = (market) => {
+  market = normalizeMarket(market) || 'BTC_ETH';
   const url = `${baseUrl}?command=returnOrderBook&currencyPair=${market}&depth=100`;
   return fetch(url)
     .then(response => {
@@ -62,8 +64,8 @@ const getOrderBook = () => {
 };
 
 // https://poloniex.com/public?command=returnTradeHistory&currencyPair=BTC_NXT&start=1410158341&end=1410499372
-const getMarketHistory = () => {
-  const market = 'BTC_ETH';
+const getMarketHistory = (market) => {
+  market = normalizeMarket(market) || 'BTC_ETH';
   const url = `${baseUrl}?command=returnTradeHistory&currencyPair=${market}`;
   return fetch(url)
     .then(response => {

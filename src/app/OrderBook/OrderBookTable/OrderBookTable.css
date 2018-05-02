@@ -1,5 +1,10 @@
 .table {
+  text-align: right;
   width: 400px;
+}
+
+.table th {
+  text-align: center;
 }
 
 .bid {
