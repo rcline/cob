@@ -14,6 +14,10 @@ var _HomePage = require('./HomePage');
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
+var _App = require('./App.css');
+
+var _App2 = _interopRequireDefault(_App);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }

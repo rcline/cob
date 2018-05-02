@@ -15,8 +15,8 @@ function OrderBook ({ data }) {
 
 OrderBook.propTypes = {
   data: PropTypes.shape({
-    buy: PropTypes.object,
-    sell: PropTypes.object,
+    buy: PropTypes.array,
+    sell: PropTypes.array,
   }),
 };
 

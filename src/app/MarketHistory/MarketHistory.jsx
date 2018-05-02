@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import c from 'classnames';
 
-function MarketHistory ({ data }) {
+import paginator from '../paginator';
+import classes from './MarketHistory.css';
+
+function MarketHistory ({ data, PaginateComponent }) {
   return (
-    <div>
-      <table>
+    <div className={classes.root}>
+      <table className={classes.table}>
         <thead>
           <tr>
             <th>Date</th>
@@ -18,14 +22,15 @@ function MarketHistory ({ data }) {
           {data && data.length > 0 && data.map((item) =>
             <tr key={item.id}>
               <td>{item.date}</td>
-              <td>{item.type}</td>
-              <td>{item.rate}</td>
-              <td>{item.amount}</td>
-              <td>{item.total}</td>
+              <td className={c(classes.type, item.type === 'sell' ? classes.ask : classes.bid)}>{item.type}</td>
+              <td>{item.rate.toFixed(8)}</td>
+              <td>{item.amount.toFixed(8)}</td>
+              <td>{item.total.toFixed(8)}</td>
             </tr>
           )}
         </tbody>
       </table>
+      {PaginateComponent}
     </div>
   );
 }
@@ -42,6 +47,7 @@ MarketHistory.propTypes = {
       exchange: PropTypes.string,
     })
   ),
+  PaginateComponent: PropTypes.node.isRequired,
 };
 
 MarketHistory.defaultProps = {
@@ -49,4 +55,4 @@ MarketHistory.defaultProps = {
 };
 
 
-export default MarketHistory;
+export default paginator(MarketHistory);

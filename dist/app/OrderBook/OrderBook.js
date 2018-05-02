@@ -35,8 +35,8 @@ function OrderBook(_ref) {
 
 OrderBook.propTypes = {
   data: _propTypes2.default.shape({
-    buy: _propTypes2.default.object,
-    sell: _propTypes2.default.object
+    buy: _propTypes2.default.array,
+    sell: _propTypes2.default.array
   })
 };
 

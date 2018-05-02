@@ -1,0 +1,11 @@
+.table {
+  width: 400px;
+}
+
+.bid {
+  color: green;
+}
+
+.ask {
+  color: red;
+}

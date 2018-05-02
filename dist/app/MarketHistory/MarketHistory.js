@@ -12,17 +12,30 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _classnames = require('classnames');
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _paginator = require('../paginator');
+
+var _paginator2 = _interopRequireDefault(_paginator);
+
+var _MarketHistory = require('./MarketHistory.css');
+
+var _MarketHistory2 = _interopRequireDefault(_MarketHistory);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function MarketHistory(_ref) {
-  var data = _ref.data;
+  var data = _ref.data,
+      PaginateComponent = _ref.PaginateComponent;
 
   return _react2.default.createElement(
     'div',
-    null,
+    { className: _MarketHistory2.default.root },
     _react2.default.createElement(
       'table',
-      null,
+      { className: _MarketHistory2.default.table },
       _react2.default.createElement(
         'thead',
         null,
@@ -70,28 +83,29 @@ function MarketHistory(_ref) {
             ),
             _react2.default.createElement(
               'td',
-              null,
+              { className: (0, _classnames2.default)(_MarketHistory2.default.type, item.type === 'sell' ? _MarketHistory2.default.ask : _MarketHistory2.default.bid) },
               item.type
             ),
             _react2.default.createElement(
               'td',
               null,
-              item.rate
+              item.rate.toFixed(8)
             ),
             _react2.default.createElement(
               'td',
               null,
-              item.amount
+              item.amount.toFixed(8)
             ),
             _react2.default.createElement(
               'td',
               null,
-              item.total
+              item.total.toFixed(8)
             )
           );
         })
       )
-    )
+    ),
+    PaginateComponent
   );
 }
 
@@ -104,11 +118,12 @@ MarketHistory.propTypes = {
     amount: _propTypes2.default.number,
     total: _propTypes2.default.number,
     exchange: _propTypes2.default.string
-  }))
+  })),
+  PaginateComponent: _propTypes2.default.node.isRequired
 };
 
 MarketHistory.defaultProps = {
   data: []
 };
 
-exports.default = MarketHistory;
+exports.default = (0, _paginator2.default)(MarketHistory);
