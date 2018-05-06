@@ -31,12 +31,14 @@ class OrderBookTable extends Component {
       }),
     ),
     isAskOrderBook: PropTypes.bool,
+    overlapAmount: PropTypes.number,
     PaginateComponent: PropTypes.node.isRequired,
   };
 
   static defaultProps = {
     className: '',
     data: [],
+    overlapAmount: null,
     isAskOrderBook: false,
   };
 
@@ -57,6 +59,7 @@ class OrderBookTable extends Component {
       className,
       data,
       isAskOrderBook,
+      overlapAmount,
       PaginateComponent,
     } = this.props;
     let sum = 0;
@@ -78,8 +81,12 @@ class OrderBookTable extends Component {
           <tbody>
           {data && data.length > 0 && data.map((item, i) => {
             sum += this.getTotal(item);
+            const hasOverlap =
+              (!!overlapAmount && isAskOrderBook && this.getRate(item) <= overlapAmount) ||
+              (!!overlapAmount && !isAskOrderBook && this.getRate(item) >= overlapAmount);
+
             return (
-              <tr key={i}>
+              <tr className={hasOverlap ? classes.overlap : ''} key={i}>
                 {BOOK.map((col, i) =>
                   <td key={i} className={col.classes}>{this[col.method](item).toFixed(8)}</td>
                 )}
