@@ -1,0 +1,51 @@
+.root {
+  background-color: #cccccc;
+}
+
+.grid {
+  stroke: black;
+  stroke-dasharray: 0;
+  stroke-width: 1;
+}
+
+.labels {}
+
+.labels.labels-x {
+  text-anchor: middle;
+}
+
+.labels.labels-y {
+  text-anchor: end;
+}
+
+.label-units {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  fill: black;
+}
+
+.data {
+  fill: none;
+  stroke-width: 3px;
+  stroke-line-join: round;
+}
+
+.bittrex.buy {
+  stroke: rgb(41, 255, 188);
+}
+
+.poloniex.buy {
+  stroke: rgb(109, 255, 65);
+
+}
+
+.bittrex.sell {
+  stroke: rgb(255, 37, 111);
+
+}
+
+.poloniex.sell {
+  stroke: rgb(255, 118, 34);
+
+}

@@ -21,7 +21,7 @@ OrderBook.propTypes = {
 };
 
 OrderBook.defaultProps = {
-  data: [],
+  data: {},
 };
 
 

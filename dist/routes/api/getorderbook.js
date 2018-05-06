@@ -42,8 +42,14 @@ router.get('/orderbook', function (req, res, next) {
     });
 
     var data = {
-      buy: combineCollections(buyCollection, true),
-      sell: combineCollections(sellCollection)
+      combined: {
+        buy: combineCollections(buyCollection, true),
+        sell: combineCollections(sellCollection)
+      },
+      exchanges: {
+        bittrex: exchanges[0],
+        poloniex: exchanges[1]
+      }
     };
 
     res.json(data);

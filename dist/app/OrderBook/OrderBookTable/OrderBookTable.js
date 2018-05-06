@@ -68,6 +68,7 @@ var OrderBookTable = function (_Component) {
           className = _props.className,
           data = _props.data,
           isAskOrderBook = _props.isAskOrderBook,
+          overlapAmount = _props.overlapAmount,
           PaginateComponent = _props.PaginateComponent;
 
       var sum = 0;
@@ -102,9 +103,11 @@ var OrderBookTable = function (_Component) {
             null,
             data && data.length > 0 && data.map(function (item, i) {
               sum += _this2.getTotal(item);
+              var hasOverlap = !!overlapAmount && isAskOrderBook && _this2.getRate(item) <= overlapAmount || !!overlapAmount && !isAskOrderBook && _this2.getRate(item) >= overlapAmount;
+
               return _react2.default.createElement(
                 'tr',
-                { key: i },
+                { className: hasOverlap ? _OrderBookTable2.default.overlap : '', key: i },
                 BOOK.map(function (col, i) {
                   return _react2.default.createElement(
                     'td',
@@ -132,11 +135,13 @@ OrderBookTable.propTypes = {
     exchange: _propTypes2.default.string
   })),
   isAskOrderBook: _propTypes2.default.bool,
+  overlapAmount: _propTypes2.default.number,
   PaginateComponent: _propTypes2.default.node.isRequired
 };
 OrderBookTable.defaultProps = {
   className: '',
   data: [],
+  overlapAmount: null,
   isAskOrderBook: false
 };
 exports.default = (0, _paginator2.default)(OrderBookTable);

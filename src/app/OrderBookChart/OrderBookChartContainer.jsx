@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import OrderBook from './OrderBook';
+import OrderBookChart from './OrderBookChart';
 
 
 function mapStateToProps(state) {
   return {
-    data: state.orderbook.combined,
+    data: state.orderbook.exchanges,
   };
 }
 
 
 export default connect(
   mapStateToProps,
-)(OrderBook);
+)(OrderBookChart);

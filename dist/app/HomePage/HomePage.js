@@ -26,6 +26,10 @@ var _OrderBook = require('../OrderBook');
 
 var _OrderBook2 = _interopRequireDefault(_OrderBook);
 
+var _OrderBookChart = require('../OrderBookChart');
+
+var _OrderBookChart2 = _interopRequireDefault(_OrderBookChart);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53,6 +57,17 @@ var App = function (_Component) {
         _react2.default.createElement(
           _Layout2.default,
           null,
+          _react2.default.createElement(
+            'h2',
+            { style: { display: 'none' } },
+            'Candlestick Chart'
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Order Book Chart'
+          ),
+          _react2.default.createElement(_OrderBookChart2.default, null),
           _react2.default.createElement(
             'h2',
             null,

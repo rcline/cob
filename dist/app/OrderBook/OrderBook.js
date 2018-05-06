@@ -28,8 +28,8 @@ function OrderBook(_ref) {
   return _react2.default.createElement(
     'div',
     { className: _OrderBook2.default.root },
-    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.buyBook, data: data.buy }),
-    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.sellBook, data: data.sell, isAskOrderBook: true })
+    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.buyBook, data: data.buy, overlapAmount: data.sell && data.sell[0].rate }),
+    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.sellBook, data: data.sell, overlapAmount: data.buy && data.buy[0].rate, isAskOrderBook: true })
   );
 }
 
@@ -41,7 +41,7 @@ OrderBook.propTypes = {
 };
 
 OrderBook.defaultProps = {
-  data: []
+  data: {}
 };
 
 exports.default = OrderBook;

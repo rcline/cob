@@ -210,13 +210,48 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".OrderBookTable_table_3acNj {\n  text-align: right;\n  width: 400px;\n}\n\n.OrderBookTable_table_3acNj th {\n  text-align: center;\n}\n\n.OrderBookTable_bid_Bstjc {\n  color: green;\n}\n\n.OrderBookTable_ask_2V5ga {\n  color: red;\n}\n", ""]);
+exports.push([module.i, ".OrderBookTable_table_3acNj {\n  text-align: right;\n  width: 400px;\n}\n\n.OrderBookTable_table_3acNj th {\n  text-align: center;\n}\n\n.OrderBookTable_bid_Bstjc {\n  color: green;\n}\n\n.OrderBookTable_ask_2V5ga {\n  color: red;\n}\n\n.OrderBookTable_overlap_VZDDQ {\n  background-color: #666;\n}\n", ""]);
 
 // exports
 exports.locals = {
 	"table": "OrderBookTable_table_3acNj",
 	"bid": "OrderBookTable_bid_Bstjc",
-	"ask": "OrderBookTable_ask_2V5ga"
+	"ask": "OrderBookTable_ask_2V5ga",
+	"overlap": "OrderBookTable_overlap_VZDDQ"
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?modules&camelCase&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!./src/app/OrderBookChart/OrderBookChart.css":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader?modules&camelCase&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!./src/app/OrderBookChart/OrderBookChart.css ***!
+  \*************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".OrderBookChart_root_3xlWj {\n  background-color: #cccccc;\n}\n\n.OrderBookChart_grid_1MSEZ {\n  stroke: black;\n  stroke-dasharray: 0;\n  stroke-width: 1;\n}\n\n.OrderBookChart_labels_1iOXJ {}\n\n.OrderBookChart_labels_1iOXJ.OrderBookChart_labels-x_2NwZM {\n  text-anchor: middle;\n}\n\n.OrderBookChart_labels_1iOXJ.OrderBookChart_labels-y_2LASw {\n  text-anchor: end;\n}\n\n.OrderBookChart_label-units_2Scsn {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: 12px;\n  fill: black;\n}\n\n.OrderBookChart_data_U5dAB {\n  fill: none;\n  stroke-width: 3px;\n  stroke-line-join: round;\n}\n\n.OrderBookChart_bittrex_3hh6V.OrderBookChart_buy_107yV {\n  stroke: rgb(41, 255, 188);\n}\n\n.OrderBookChart_poloniex_1W38v.OrderBookChart_buy_107yV {\n  stroke: rgb(109, 255, 65);\n\n}\n\n.OrderBookChart_bittrex_3hh6V.OrderBookChart_sell_1-IA9 {\n  stroke: rgb(255, 37, 111);\n\n}\n\n.OrderBookChart_poloniex_1W38v.OrderBookChart_sell_1-IA9 {\n  stroke: rgb(255, 118, 34);\n\n}\n", ""]);
+
+// exports
+exports.locals = {
+	"root": "OrderBookChart_root_3xlWj",
+	"grid": "OrderBookChart_grid_1MSEZ",
+	"labels": "OrderBookChart_labels_1iOXJ",
+	"labels-x": "OrderBookChart_labels-x_2NwZM",
+	"labelsX": "OrderBookChart_labels-x_2NwZM",
+	"labels-y": "OrderBookChart_labels-y_2LASw",
+	"labelsY": "OrderBookChart_labels-y_2LASw",
+	"label-units": "OrderBookChart_label-units_2Scsn",
+	"labelUnits": "OrderBookChart_label-units_2Scsn",
+	"data": "OrderBookChart_data_U5dAB",
+	"bittrex": "OrderBookChart_bittrex_3hh6V",
+	"buy": "OrderBookChart_buy_107yV",
+	"poloniex": "OrderBookChart_poloniex_1W38v",
+	"sell": "OrderBookChart_sell_1-IA9"
 };
 
 /***/ }),
@@ -23550,6 +23585,10 @@ var _OrderBook = __webpack_require__(/*! ../OrderBook */ "./src/app/OrderBook/in
 
 var _OrderBook2 = _interopRequireDefault(_OrderBook);
 
+var _OrderBookChart = __webpack_require__(/*! ../OrderBookChart */ "./src/app/OrderBookChart/index.js");
+
+var _OrderBookChart2 = _interopRequireDefault(_OrderBookChart);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23577,6 +23616,17 @@ var App = function (_Component) {
         _react2.default.createElement(
           _Layout2.default,
           null,
+          _react2.default.createElement(
+            'h2',
+            { style: { display: 'none' } },
+            'Candlestick Chart'
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Order Book Chart'
+          ),
+          _react2.default.createElement(_OrderBookChart2.default, null),
           _react2.default.createElement(
             'h2',
             null,
@@ -23906,8 +23956,6 @@ var _MarketHistory = __webpack_require__(/*! ./MarketHistory */ "./src/app/Marke
 
 var _MarketHistory2 = _interopRequireDefault(_MarketHistory);
 
-var _actions = __webpack_require__(/*! ../store/actions */ "./src/app/store/actions/index.js");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function mapStateToProps(state) {
@@ -23916,15 +23964,7 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    handleAddForm: function handleAddForm() {
-      return dispatch(_actions.markethistory.get());
-    }
-  };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_MarketHistory2.default);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(_MarketHistory2.default);
 
 /***/ }),
 
@@ -24022,8 +24062,8 @@ function OrderBook(_ref) {
   return _react2.default.createElement(
     'div',
     { className: _OrderBook2.default.root },
-    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.buyBook, data: data.buy }),
-    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.sellBook, data: data.sell, isAskOrderBook: true })
+    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.buyBook, data: data.buy, overlapAmount: data.sell && data.sell[0].rate }),
+    _react2.default.createElement(_OrderBookTable2.default, { className: _OrderBook2.default.sellBook, data: data.sell, overlapAmount: data.buy && data.buy[0].rate, isAskOrderBook: true })
   );
 }
 
@@ -24035,7 +24075,7 @@ OrderBook.propTypes = {
 };
 
 OrderBook.defaultProps = {
-  data: []
+  data: {}
 };
 
 exports.default = OrderBook;
@@ -24066,25 +24106,15 @@ var _OrderBook = __webpack_require__(/*! ./OrderBook */ "./src/app/OrderBook/Ord
 
 var _OrderBook2 = _interopRequireDefault(_OrderBook);
 
-var _actions = __webpack_require__(/*! ../store/actions */ "./src/app/store/actions/index.js");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function mapStateToProps(state) {
   return {
-    data: state.orderbook
+    data: state.orderbook.combined
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    handleAddForm: function handleAddForm() {
-      return dispatch(_actions.orderbook.get());
-    }
-  };
-}
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_OrderBook2.default);
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(_OrderBook2.default);
 
 /***/ }),
 
@@ -24196,6 +24226,7 @@ var OrderBookTable = function (_Component) {
           className = _props.className,
           data = _props.data,
           isAskOrderBook = _props.isAskOrderBook,
+          overlapAmount = _props.overlapAmount,
           PaginateComponent = _props.PaginateComponent;
 
       var sum = 0;
@@ -24230,9 +24261,11 @@ var OrderBookTable = function (_Component) {
             null,
             data && data.length > 0 && data.map(function (item, i) {
               sum += _this2.getTotal(item);
+              var hasOverlap = !!overlapAmount && isAskOrderBook && _this2.getRate(item) <= overlapAmount || !!overlapAmount && !isAskOrderBook && _this2.getRate(item) >= overlapAmount;
+
               return _react2.default.createElement(
                 'tr',
-                { key: i },
+                { className: hasOverlap ? _OrderBookTable2.default.overlap : '', key: i },
                 BOOK.map(function (col, i) {
                   return _react2.default.createElement(
                     'td',
@@ -24260,11 +24293,13 @@ OrderBookTable.propTypes = {
     exchange: _propTypes2.default.string
   })),
   isAskOrderBook: _propTypes2.default.bool,
+  overlapAmount: _propTypes2.default.number,
   PaginateComponent: _propTypes2.default.node.isRequired
 };
 OrderBookTable.defaultProps = {
   className: '',
   data: [],
+  overlapAmount: null,
   isAskOrderBook: false
 };
 exports.default = (0, _paginator2.default)(OrderBookTable);
@@ -24320,6 +24355,314 @@ function _interopRequireDefault(obj) {
 }
 
 exports.default = _OrderBookContainer2.default;
+
+/***/ }),
+
+/***/ "./src/app/OrderBookChart/OrderBookChart.css":
+/*!***************************************************!*\
+  !*** ./src/app/OrderBookChart/OrderBookChart.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader?modules&camelCase&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!./OrderBookChart.css */ "./node_modules/css-loader/index.js?modules&camelCase&importLoaders=1&localIdentName=[name]_[local]_[hash:base64:5]!./src/app/OrderBookChart/OrderBookChart.css");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./src/app/OrderBookChart/OrderBookChart.jsx":
+/*!***************************************************!*\
+  !*** ./src/app/OrderBookChart/OrderBookChart.jsx ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _classnames = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _OrderBookChart = __webpack_require__(/*! ./OrderBookChart.css */ "./src/app/OrderBookChart/OrderBookChart.css");
+
+var _OrderBookChart2 = _interopRequireDefault(_OrderBookChart);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var OrderBookChart = function (_Component) {
+  _inherits(OrderBookChart, _Component);
+
+  function OrderBookChart() {
+    _classCallCheck(this, OrderBookChart);
+
+    return _possibleConstructorReturn(this, (OrderBookChart.__proto__ || Object.getPrototypeOf(OrderBookChart)).apply(this, arguments));
+  }
+
+  _createClass(OrderBookChart, [{
+    key: 'getAxisMinMaxValues',
+    value: function getAxisMinMaxValues(data) {
+      var xmax = 0;
+      var xmin = Infinity;
+      var ymax = 0;
+      var ymin = Infinity;
+
+      data.forEach(function (item) {
+        xmax = item.rate > xmax ? item.rate : xmax;
+        xmin = item.rate < xmin ? item.rate : xmin;
+        ymax = item.sum > ymax ? item.sum : ymax;
+        ymin = item.sum < ymin ? item.sum : ymin;
+      });
+
+      return {
+        x: {
+          max: xmax,
+          min: xmin
+        },
+        y: {
+          max: ymax,
+          min: ymin
+        }
+      };
+    }
+  }, {
+    key: 'getChartPoints',
+    value: function getChartPoints(data, minMaxValues, width, height, offsetX, offsetY) {
+      return data.map(function (order, i) {
+        var normalizeX = (order.rate - minMaxValues.x.min) / (minMaxValues.x.max - minMaxValues.x.min);
+        var scaleX = width - offsetY;
+        var normalizeY = (order.sum - minMaxValues.y.min) / (minMaxValues.y.max - minMaxValues.y.min);
+        var scaleY = height - offsetX;
+        var x = normalizeX * scaleX + offsetY;
+        var y = height - offsetX - normalizeY * scaleY;
+
+        if (i === 0) {
+          return 'M' + x + ',' + y;
+        } else {
+          return 'L' + x + ',' + y;
+        }
+      }).join(' ');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var _props = this.props,
+          data = _props.data,
+          height = _props.height,
+          marginX = _props.marginX,
+          marginY = _props.marginY,
+          width = _props.width;
+
+
+      var bittrex = data && data.bittrex;
+      var poloniex = data && data.poloniex;
+
+      if (!bittrex || !poloniex) {
+        return null;
+      }
+
+      var minMaxValues = this.getAxisMinMaxValues([].concat(bittrex.buy).concat(bittrex.sell).concat(poloniex.buy).concat(poloniex.sell));
+      var _minMaxValues$x = minMaxValues.x,
+          xmax = _minMaxValues$x.max,
+          xmin = _minMaxValues$x.min,
+          _minMaxValues$y = minMaxValues.y,
+          ymax = _minMaxValues$y.max,
+          ymin = _minMaxValues$y.min;
+
+
+      return _react2.default.createElement(
+        'svg',
+        {
+          ref: function ref(el) {
+            return _this2.elSvg = el;
+          },
+          className: _OrderBookChart2.default.root,
+          width: width,
+          height: height
+        },
+        _react2.default.createElement(
+          'title',
+          null,
+          'Layered orderbook chart'
+        ),
+        _react2.default.createElement(
+          'g',
+          { className: _OrderBookChart2.default.grid },
+          _react2.default.createElement('line', { x1: marginY, x2: marginY, y1: 0, y2: height - marginX })
+        ),
+        _react2.default.createElement(
+          'g',
+          { className: _OrderBookChart2.default.grid },
+          _react2.default.createElement('line', { x1: marginY, x2: width, y1: height - marginX, y2: height - marginX })
+        ),
+        _react2.default.createElement(
+          'g',
+          { className: (0, _classnames2.default)(_OrderBookChart2.default.labels, _OrderBookChart2.default.labelsX) },
+          _react2.default.createElement(
+            'text',
+            { x: marginY, y: height - marginX / 2 },
+            xmin
+          ),
+          _react2.default.createElement(
+            'text',
+            { x: width - 50, y: height - marginX / 2 },
+            xmax
+          )
+        ),
+        _react2.default.createElement(
+          'g',
+          { className: (0, _classnames2.default)(_OrderBookChart2.default.labels, _OrderBookChart2.default.labelsY) },
+          _react2.default.createElement(
+            'text',
+            { x: marginY - 10, y: height - marginX },
+            '0'
+          ),
+          _react2.default.createElement(
+            'text',
+            { x: marginY - 10, y: 20 },
+            parseInt(ymax)
+          )
+        ),
+        _react2.default.createElement('path', {
+          className: (0, _classnames2.default)(_OrderBookChart2.default.data, _OrderBookChart2.default.bittrex, _OrderBookChart2.default.buy),
+          d: this.getChartPoints(bittrex.buy, minMaxValues, width, height, marginX, marginY)
+        }),
+        _react2.default.createElement('path', {
+          className: (0, _classnames2.default)(_OrderBookChart2.default.data, _OrderBookChart2.default.bittrex, _OrderBookChart2.default.sell),
+          d: this.getChartPoints(bittrex.sell, minMaxValues, width, height, marginX, marginY)
+        }),
+        _react2.default.createElement('path', {
+          className: (0, _classnames2.default)(_OrderBookChart2.default.data, _OrderBookChart2.default.poloniex, _OrderBookChart2.default.buy),
+          d: this.getChartPoints(poloniex.buy, minMaxValues, width, height, marginX, marginY)
+        }),
+        _react2.default.createElement('path', {
+          className: (0, _classnames2.default)(_OrderBookChart2.default.data, _OrderBookChart2.default.poloniex, _OrderBookChart2.default.sell),
+          d: this.getChartPoints(poloniex.sell, minMaxValues, width, height, marginX, marginY)
+        })
+      );
+    }
+  }]);
+
+  return OrderBookChart;
+}(_react.Component);
+
+OrderBookChart.propTypes = {
+  data: _propTypes2.default.object,
+  height: _propTypes2.default.number,
+  marginX: _propTypes2.default.number,
+  marginY: _propTypes2.default.number,
+  width: _propTypes2.default.number
+};
+OrderBookChart.defaultProps = {
+  data: {},
+  height: 600,
+  marginX: 50,
+  marginY: 100,
+  width: 800
+};
+exports.default = OrderBookChart;
+
+/***/ }),
+
+/***/ "./src/app/OrderBookChart/OrderBookChartContainer.jsx":
+/*!************************************************************!*\
+  !*** ./src/app/OrderBookChart/OrderBookChartContainer.jsx ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _OrderBookChart = __webpack_require__(/*! ./OrderBookChart */ "./src/app/OrderBookChart/OrderBookChart.jsx");
+
+var _OrderBookChart2 = _interopRequireDefault(_OrderBookChart);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function mapStateToProps(state) {
+  return {
+    data: state.orderbook.exchanges
+  };
+}
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(_OrderBookChart2.default);
+
+/***/ }),
+
+/***/ "./src/app/OrderBookChart/index.js":
+/*!*****************************************!*\
+  !*** ./src/app/OrderBookChart/index.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _OrderBookChartContainer = __webpack_require__(/*! ./OrderBookChartContainer */ "./src/app/OrderBookChart/OrderBookChartContainer.jsx");
+
+var _OrderBookChartContainer2 = _interopRequireDefault(_OrderBookChartContainer);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+exports.default = _OrderBookChartContainer2.default;
 
 /***/ }),
 
@@ -24736,14 +25079,38 @@ function _interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj };
 }
 
+function addTotals(data) {
+  var sum = 0;
+  data.forEach(function (item) {
+    sum += item.amount;
+    item.sum = sum;
+  });
+  return data;
+}
+
 function get() {
   return function (dispatch) {
     (0, _isomorphicFetch2.default)('/api/orderbook').then(function (response) {
       return response.json();
     }).then(function (data) {
+      var exchanges = {};
+
+      Object.keys(data.exchanges).forEach(function (key) {
+        exchanges[key] = {
+          buy: addTotals(data.exchanges[key].buy),
+          sell: addTotals(data.exchanges[key].sell)
+        };
+      });
+
       return dispatch({
         type: _actionEnums.ORDER_BOOK_GET,
-        data: data
+        data: {
+          combined: {
+            buy: addTotals(data.combined.buy),
+            sell: addTotals(data.combined.sell)
+          },
+          exchanges: exchanges
+        }
       });
     });
   };
